@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { DayGrid } from "@fullcalendar/daygrid";
+import { Calendar } from '@fullcalendar/core';
+import { DayGrid } from '@fullcalendar/daygrid';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +8,15 @@ import { DayGrid } from "@fullcalendar/daygrid";
 })
 export class AppComponent {
   title = 'MintTvätt';
-  calendarPlugins: [DayGrid];
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+  var calendarEl = document.getElementById('calendar');
+
+let calendar = new Calendar(calendarEl, {
+    plugins: [ DayGrid ],
+    defaultView: 'dayGridMonth'
+  });
+
+   calendar.render();
+});
