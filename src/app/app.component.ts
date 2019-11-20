@@ -1,14 +1,22 @@
-import { Component } from '@angular/core';
-// import { Calendar } from '@fullcalendar/angular/fullcalendar-angular';
+import { Component, OnInit } from '@angular/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
-import resourceTimeGridPlugin from '@fullcalendar/resource-timegrid'
+import { CalendarService } from './calendar.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'MinTvättTid';
   calendarPlugins = [dayGridPlugin];
-  resources: [];
+  calendarEvents: any[] = [];
+
+  constructor(private service: CalendarService) {
+
+  }
+
+  ngOnInit() {
+    this.service.getData().subscribe(data => this.calendarEvents = data);
+  }
 }

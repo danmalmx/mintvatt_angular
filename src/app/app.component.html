@@ -1,2 +1,4 @@
-<full-calendar [events]="[{start: '2019-11-21', title: 'Boka tid'}]" defaultView="dayGridWeek"
-  [plugins]="calendarPlugins"></full-calendar>
+<full-calendar [events]="calendarEvents" defaultView="dayGridWeek" [plugins]="calendarPlugins"
+  [resources]="resourceEditable" deepChangeDetection="true">
+
+</full-calendar>
